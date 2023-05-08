@@ -21,7 +21,7 @@ df = pd.read_csv(StringIO(testo_file), delimiter=",")
 #######################################################
 ############### COMANDI STREAMLIT #####################
 #######################################################
-
+import streamlit as st
 streamlit run prova.ipynb
 
 #titolo
