@@ -287,7 +287,7 @@ st.write('RUL predetto:', rul_pred)
 
 # Controllo sul valore del RUL predetto
 if rul_pred < 50:
-    st.markdown(f"<h1 style='color:red'>'**Attenzione**: il RUL predetto per questa unità è inferiore a 50!')
+    st.markdown("<h1 style='color:red'> **Attenzione**: il RUL predetto per questa unità è inferiore a 50!")
 
 ###################
 # Sidebar per la selezione dell'unità
