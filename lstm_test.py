@@ -26,7 +26,7 @@ from sklearn import preprocessing
 # lib per plot
 import matplotlib.pyplot as plt
 #%matplotlib inline
-import seaborn as sns
+#import seaborn as sns
 
 # accuracy e matrice di confusione
 from sklearn.metrics import accuracy_score
