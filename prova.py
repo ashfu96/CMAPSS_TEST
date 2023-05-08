@@ -21,9 +21,12 @@ st.title('Predizione del Rul')
 st.write("Predizione della vita utile residua per singola unità")
 
 #menu a tendina per selezione unit_ID
-opzioni = list(df["1"].unique())
-selezione = st.selectbox("Seleziona l'unità tramite ID", opzioni)
-df_filtrato = df[df["1"] == selezione]
+#opzioni = list(df["1"].unique())
+#selezione = st.selectbox("Seleziona l'unità tramite ID", opzioni)
+#df_filtrato = df[df["1"] == selezione]
+
+# Sidebar per la selezione dell'unità
+selezione = st.sidebar.selectbox("Seleziona l'unità tramite ID", list(df["1"].unique()))
 
 # genero un valore casuale di RUL
 import random
