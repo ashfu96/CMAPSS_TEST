@@ -265,43 +265,12 @@ if os.path.isfile(model_path):
           ### STREAMLIT ###
 #######################################
 import streamlit as st
+
 st.title('Predizione del Rul')
 st.write("Predizione della vita utile residua per singola unità")
 
 # Sidebar per la selezione dell'unità
 unit_id = st.sidebar.selectbox('Seleziona l\'unità da analizzare:', list(df_test['unit_ID'].unique()))
 
-# Tabella con i dati dell'unità selezionata
-#st.write('### Dati per l\'unità', unit_id)
-#st.table(df_test[df_test['unit_ID'] == unit_id])
-
-# Predizione del RUL per l'unità selezionata
-seq_array_test = df_test[df_test['unit_ID'] == unit_id][sequence_cols].values[-sequence_length:]
-seq_array_test = seq_array_test.reshape((1, seq_array_test.shape[0], seq_array_test.shape[1]))
-y_pred = estimator.predict(seq_array_test)
-rul_pred = round(y_pred[0][0])
-
-# Controllo sul valore del RUL predetto
-if rul_pred < 50:
-    st.markdown("<h1 style='color:red'> **Attenzione**: il RUL predetto per questa unità è inferiore a 50!")
-else:
-    st.write(f" L'unità {unit_id} può effettuare altri {rul_pred} voli")
-
-###################
-# Sidebar per la selezione dell'unità
-#selezione = st.sidebar.selectbox("Seleziona l'unità tramite ID", list(df_test["unit_ID"].unique()))
-
-#st.write(f"Scelta l'unità {selezione} \n")
-
-# Filtro del dataframe per l'unità selezionata
-#df_unit = df_test[df_test['unit_ID'] == unit_ID]
-
-# Visualizzazione dei dati dell'unità selezionata
-#st.write('Dati dell\'unità selezionata:')
-#st.table(df_unit)
-
-# print predicted RUL for each unit
-#for i in range(len(y_pred_test)):
-    #st.write('Unit', i+1, '- RUL predicted:', y_pred_test[i])
     
 
