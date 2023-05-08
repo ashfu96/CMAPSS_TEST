@@ -269,7 +269,7 @@ st.title('Predizione del Rul')
 st.write("Predizione della vita utile residua per singola unità")
 
 # Sidebar per la selezione dell'unità
-unit_id = st.sidebar.selectbox('Seleziona l\'unità da analizzare:', df_test['unit_ID'].unique())
+unit_id = st.sidebar.selectbox('Seleziona l\'unità da analizzare:', list(df_test['unit_ID'].unique()))
 
 # Tabella con i dati dell'unità selezionata
 #st.write('### Dati per l\'unità', unit_id)
@@ -281,13 +281,11 @@ seq_array_test = seq_array_test.reshape((1, seq_array_test.shape[0], seq_array_t
 y_pred = estimator.predict(seq_array_test)
 rul_pred = round(y_pred[0][0])
 
-# Visualizzazione del RUL predetto
-st.write('### RUL predetto per l\'unità', unit_id)
-st.write('RUL predetto:', rul_pred)
-
 # Controllo sul valore del RUL predetto
 if rul_pred < 50:
     st.markdown("<h1 style='color:red'> **Attenzione**: il RUL predetto per questa unità è inferiore a 50!")
+else:
+    st.write(f" L'unità {unit_id} può effettuare altri {rul_pred} voli")
 
 ###################
 # Sidebar per la selezione dell'unità
