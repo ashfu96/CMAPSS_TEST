@@ -5,18 +5,10 @@
 import numpy as np
 import pandas as pd
 import random
-import requests
-from io import StringIO
 
 # URL del dataset della repository
 url = "https://raw.githubusercontent.com/ashfu96/CMAPSS_TEST/main/test_FD001.txt"
-
-# Carica il file dal tuo repository Github
-response = requests.get(url)
-testo_file = response.text
-
-# Converte il testo del file in un oggetto pandas DataFrame
-df = pd.read_csv(StringIO(testo_file), delimiter=",")
+df = pd.read_csv(url, delimiter=" ")
 
 #######################################################
 ############### COMANDI STREAMLIT #####################
@@ -29,9 +21,9 @@ st.title('Predizione del Rul')
 st.write("Predizione della vita utile residua per singola unità")
 
 #menu a tendina per selezione unit_ID
-opzioni = list(df["0"].unique())
+opzioni = list(df["1"].unique())
 selezione = st.selectbox("Seleziona l'unità tramite ID", opzioni)
-df_filtrato = df[df["0"] == selezione]
+df_filtrato = df[df["1"] == selezione]
 
 # genero un valore casuale di RUL
 import random
