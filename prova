@@ -1,0 +1,7 @@
+# prova in streamlit per una dashboard di selezione unità
+# e visualizzazione rul predetto (statico di prova)
+
+# gestione di tipi dataframe 
+import numpy as np
+import pandas as pd
+import random
