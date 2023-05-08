@@ -273,7 +273,7 @@ unit_id = st.sidebar.selectbox('Seleziona l\'unità da analizzare:', df_test['un
 
 # Tabella con i dati dell'unità selezionata
 st.write('### Dati per l\'unità', unit_id)
-st.table(df_test[df_test['unit_ID'] == unit_id])
+#st.table(df_test[df_test['unit_ID'] == unit_id])
 
 # Predizione del RUL per l'unità selezionata
 seq_array_test = df_test[df_test['unit_ID'] == unit_id][sequence_cols].values[-sequence_length:]
