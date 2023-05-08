@@ -68,8 +68,6 @@ columns_train = ['unit_ID','time_in_cycles','setting_1', 'setting_2','setting_3'
 df_train.columns = columns_train
 df_test.columns = columns_train
 
-df_train.columns
-
 #######################################
     ### LABELING & NORMALIZATION ###
 #######################################
@@ -157,7 +155,6 @@ sequence_cols.extend(sensor_cols)
 # TODO for debug 
 # val is a list of 192 - 50 = 142 bi-dimensional array (50 rows x 25 columns)
 val=list(gen_sequence(df_train[df_train['unit_ID']==1], sequence_length, sequence_cols))
-print(len(val))
 
 # generator for the sequences
 # transform each id of the train dataset in a sequence
@@ -227,13 +224,12 @@ history = model.fit(seq_array, label_array, epochs=100, batch_size=50, validatio
                        keras.callbacks.ModelCheckpoint(model_path,monitor='val_loss', save_best_only=True, mode='min', verbose=0)]
           )
 
-# list all data in history
-print(history.history.keys())
 
 #########################################
 #########################################
 
 import os
+
 # We pick the last sequence for each id in the test data
 seq_array_test_last = [df_test[df_test['unit_ID']==id][sequence_cols].values[-sequence_length:] 
                        for id in df_test['unit_ID'].unique() if len(df_test[df_test['unit_ID']==id]) >= sequence_length]
@@ -253,8 +249,8 @@ if os.path.isfile(model_path):
 
     # test metrics
     scores_test = estimator.evaluate(seq_array_test_last, label_array_test_last, verbose=2)
-    print('\nMAE: {}'.format(scores_test[1]))
-    print('\nR^2: {}'.format(scores_test[2]))
+    #print('\nMAE: {}'.format(scores_test[1]))
+    #print('\nR^2: {}'.format(scores_test[2]))
 
     y_pred_test = estimator.predict(seq_array_test_last)
     y_true_test = label_array_test_last
@@ -267,10 +263,10 @@ if os.path.isfile(model_path):
 import streamlit as st
 
 st.title('Predizione del Rul')
-st.write("Predizione della vita utile residua per singola unità")
+#st.write("Predizione della vita utile residua per singola unità")
 
 # Sidebar per la selezione dell'unità
-unit_id = st.sidebar.selectbox('Seleziona l\'unità da analizzare:', list(df_test['unit_ID'].unique()))
+#unit_id = st.sidebar.selectbox('Seleziona l\'unità da analizzare:', list(df_test['unit_ID'].unique()))
 
     
 
