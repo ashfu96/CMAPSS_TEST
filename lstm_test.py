@@ -265,14 +265,14 @@ if os.path.isfile(model_path):
           ### STREAMLIT ###
 #######################################
 import streamlit as st
-St.title('Predizione del Rul')
+st.title('Predizione del Rul')
 st.write("Predizione della vita utile residua per singola unità")
 
 # Sidebar per la selezione dell'unità
 unit_id = st.sidebar.selectbox('Seleziona l\'unità da analizzare:', df_test['unit_ID'].unique())
 
 # Tabella con i dati dell'unità selezionata
-st.write('### Dati per l\'unità', unit_id)
+#st.write('### Dati per l\'unità', unit_id)
 #st.table(df_test[df_test['unit_ID'] == unit_id])
 
 # Predizione del RUL per l'unità selezionata
@@ -287,7 +287,7 @@ st.write('RUL predetto:', rul_pred)
 
 # Controllo sul valore del RUL predetto
 if rul_pred < 50:
-    st.write('**Attenzione**: il RUL predetto per questa unità è inferiore a 50!')
+    st.markdown(f"<h1 style='color:red'>'**Attenzione**: il RUL predetto per questa unità è inferiore a 50!')
 
 ###################
 # Sidebar per la selezione dell'unità
