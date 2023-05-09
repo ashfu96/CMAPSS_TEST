@@ -178,7 +178,7 @@ label_gen = [gen_labels(df_train[df_train['unit_ID']==id], sequence_length, ['RU
              for id in df_train['unit_ID'].unique()]
 
 label_array = np.concatenate(label_gen).astype(np.float32)
-label_array.shape
+#label_array.shape
 
 #######################################
     ### PARAMETRI DIMENSIONALI ###
