@@ -286,4 +286,4 @@ if y_pred_test < 50:
 else:
            st.write("Il valore predetto per l'unità {} è: {}".format(unit_id, y_pred_test[0][0]))
 
-st.write("Il valore reale per l'unità {} è: {}".format(unit_id, y_true_test[0][0]))
+#st.write("Il valore reale per l'unità {} è: {}".format(unit_id, y_true_test[0][0]))
