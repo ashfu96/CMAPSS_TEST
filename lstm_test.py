@@ -262,11 +262,28 @@ if os.path.isfile(model_path):
 #######################################
 import streamlit as st
 
-st.title('Predizione della vita utile residua per singola unità')
+#st.title('Predizione della vita utile residua per singola unità')
 #st.write("Predizione della vita utile residua per singola unità")
 
 # Sidebar per la selezione dell'unità
-unit_id = st.sidebar.selectbox('Seleziona l\'unità da analizzare tramite **ID**:', list(df_test['unit_ID'].unique()))
+#unit_id = st.sidebar.selectbox('Seleziona l\'unità da analizzare tramite :red[ID]:', list(df_test['unit_ID'].unique()))
 
+#######################################################################
+# Crea il dataframe con i risultati
+test_set = pd.DataFrame({'unit_ID': unit_ID_array_test_last, 'y_pred': y_pred_test})
+
+# Sidebar per la selezione dell'unità
+unit_id = st.sidebar.selectbox('Seleziona l\'unità da analizzare:', list(test_set['unit_ID'].unique()))
+
+# Seleziona i dati relativi all'unità di interesse
+unit_data = test_set[test_set['unit_ID'] == unit_id]
+
+# Mostra la dashboard
+st.title("Dashboard di predizione per l'unità {}".format(unit_id))
+
+if unit_data['y_pred'].values[0] < 50:
+    st.markdown("Il valore predetto per l'unità {} è: {}".format(unit_id, unit_data['y_pred'].values[0]))
+else:
+    st.write("Il valore predetto per l'unità {} è: {}".format(unit_id, unit_data['y_pred'].values[0]))
     
 
