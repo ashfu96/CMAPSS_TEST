@@ -282,7 +282,7 @@ y_pred_test = estimator.predict(seq_array_test_last_unit)
 y_true_test = label_array_test_last_unit
 
 if y_pred_test < 75:
-           st.markdown(" <font color='red'> ATTENZIONE! Il valore predetto per l'unità {} è: {}".format(unit_id, y_pred_test[0][0]))
+           st.markdown("<h1 style='color:red'> ATTENZIONE! Il valore predetto per l'unità {} è: {} </h1>".format(unit_id, y_pred_test[0][0]) , unsafe_allow_html=True)
 else:
            st.write("Il valore predetto per l'unità {} è: {}".format(unit_id, y_pred_test[0][0]))
 
