@@ -163,7 +163,7 @@ seq_gen = (list(gen_sequence(df_train[df_train['unit_ID']==id], sequence_length,
 
 # generate sequences and convert to numpy array
 seq_array = np.concatenate(list(seq_gen)).astype(np.float32)
-print(seq_array.shape)
+#print(seq_array.shape)
 
 # function to generate labels
 def gen_labels(id_df, seq_length, label):
@@ -262,11 +262,11 @@ if os.path.isfile(model_path):
 #######################################
 import streamlit as st
 
-st.title('Predizione del Rul')
+st.title('Predizione della vita utile residua per singola unità')
 #st.write("Predizione della vita utile residua per singola unità")
 
 # Sidebar per la selezione dell'unità
-#unit_id = st.sidebar.selectbox('Seleziona l\'unità da analizzare:', list(df_test['unit_ID'].unique()))
+unit_id = st.sidebar.selectbox('Seleziona l\'unità da analizzare tramite **ID**:', list(df_test['unit_ID'].unique()))
 
     
 
