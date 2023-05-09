@@ -269,23 +269,23 @@ import streamlit as st
 #unit_id = st.sidebar.selectbox('Seleziona l\'unità da analizzare tramite :red[ID]:', list(df_test['unit_ID'].unique()))
 
 #######################################################################
-    st.title('Predizione della vita utile residua per singola unità')
+st.title('Predizione della vita utile residua per singola unità')
            
-    unit_id = st.sidebar.selectbox('Seleziona l\'unità da analizzare:', list(df_test['unit_ID'].unique()))
+unit_id = st.sidebar.selectbox('Seleziona l\'unità da analizzare:', list(df_test['unit_ID'].unique()))
 
-    # Seleziona i dati relativi all'unità di interesse
-    seq_array_test_last_unit = seq_array_test_last[np.where(df_test['unit_ID'].unique() == unit_id)[0][0]].reshape(1, sequence_length, -1)
-    label_array_test_last_unit = label_array_test_last[np.where(df_test.groupby('unit_ID')['RUL'].nth(-1).values == df_test[df_test['unit_ID'] == unit_id]['RUL'].values[-1])[0][0]].reshape(1,1)
+# Seleziona i dati relativi all'unità di interesse
+seq_array_test_last_unit = seq_array_test_last[np.where(df_test['unit_ID'].unique() == unit_id)[0][0]].reshape(1, sequence_length, -1)
+label_array_test_last_unit = label_array_test_last[np.where(df_test.groupby('unit_ID')['RUL'].nth(-1).values == df_test[df_test['unit_ID'] == unit_id]['RUL'].values[-1])[0][0]].reshape(1,1)
 
-    # Esegui la predizione e mostra i risultati
-    y_pred_test = estimator.predict(seq_array_test_last_unit)
-    y_true_test = label_array_test_last_unit
+# Esegui la predizione e mostra i risultati
+y_pred_test = estimator.predict(seq_array_test_last_unit)
+y_true_test = label_array_test_last_unit
 
     if y_pred_test < 50:
         st.markdown("Il valore predetto per l'unità {} è inferiore a 50!".format(unit_id))
     else:
         st.write("Il valore predetto per l'unità {} è: {}".format(unit_id, y_pred_test[0][0]))
 
-    st.write("Il valore reale per l'unità {} è: {}".format(unit_id, y_true_test[0][0]))
+st.write("Il valore reale per l'unità {} è: {}".format(unit_id, y_true_test[0][0]))
     
 
