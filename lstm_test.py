@@ -281,7 +281,7 @@ label_array_test_last_unit = label_array_test_last[np.where(df_test.groupby('uni
 y_pred_test = estimator.predict(seq_array_test_last_unit)
 y_true_test = label_array_test_last_unit
 
-if y_pred_test < 50:
+if y_pred_test < 75:
            st.markdown(" <font color='red'> ATTENZIONE! Il valore predetto per l'unità {} è: {}".format(unit_id, y_pred_test[0][0]))
 else:
            st.write("Il valore predetto per l'unità {} è: {}".format(unit_id, y_pred_test[0][0]))
